@@ -1,39 +1,39 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "../App.css"
+import { useState } from "react";
+import "../App.css";
 
-const ListJokes = () => {
-  const [jokes, setJokes] = useState([]);
+const RandomJoke = () => {
+  const [joke, setJoke] = useState(null);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/jokes", {
-      method: "GET",    
+  const fetchRandomJoke = () => {
+    fetch("https://carambarapi-fuqc.onrender.com/api/v1/random", {
+      method: "GET",
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
-        setJokes(data);
+        setJoke(data); // Mettez à jour l'état avec la nouvelle blague
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la récupération de la blague :", error);
       });
-  }, []);
+  };
 
   return (
     <main>
-      <h1>Liste des blagues Carambar</h1>
+      <h1>Blague Carambar Aléatoire</h1>
       <section>
-        {jokes.map((joke) => {
-          return (
-            <article className="listJokes" key={joke.id}>
-              <Link to={`/details/${joke.id}`}>
-              <h2>{joke.question}</h2>
-              <h2>{joke.category}</h2>
-              </Link>
-            </article>
-          );
-        })}
+        <button onClick={fetchRandomJoke} className="randomButton">
+          Obtenir une blague aléatoire
+        </button>
+
+        {joke && (
+          <article className="randomJoke">
+            <h2>{joke.question}</h2>
+            <p>{joke.answer}</p>
+          </article>
+        )}
       </section>
     </main>
   );
 };
 
-export default ListJokes;
+export default RandomJoke;

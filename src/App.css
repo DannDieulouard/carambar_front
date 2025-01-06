@@ -2,23 +2,6 @@
   background-color: #fbf6ed;
 }
 
-.listToys {   
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.toyDetail {
-  margin-top: 50px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  flex-direction: column;
-}
-
 .header {
   width: 100vw;
   margin: 0;
@@ -46,12 +29,41 @@
   height: auto;
 }
 
-.toyImage {
-  height: 400px;
-  width: 400px;
-}
-
 h1 {
   text-align: center;
   background-color: #fbf6ed;
+}
+
+
+.randomButton {
+  padding: 10px 20px;
+  background-color: #ffca28;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  margin: 20px 0;
+}
+
+.randomButton:hover {
+  background-color: #ffa000;
+  color: white;
+}
+
+.randomJoke {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  margin-top: 20px;
+}
+
+.randomJoke h2 {
+  color: #ff5722;
+}
+
+.randomJoke p {
+  margin: 5px 0;
+  font-size: 16px;
 }
